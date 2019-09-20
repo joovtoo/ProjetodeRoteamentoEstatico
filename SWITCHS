@@ -1,0 +1,103 @@
+S1
+
+enable
+configure terminal
+hostname S1
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede1.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret Senhaadmin
+username estagiario privilege 1 secret Senhaestag
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 192.168.1.1
+interface vlan1 
+ip address 192.168.1.254 255.255.255.224
+do wr
+
+S2
+
+enable
+configure terminal
+hostname S2
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede2.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret Senhaadmin
+username estagiario privilege 1 secret Senhaestag
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 10.40.10.1
+interface vlan1 
+ip address 10.40.16.254 255.255.240.0
+do wr
+
+S3
+
+enable
+configure terminal
+hostname S3
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede3.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret Senhaadmin
+username estagiario privilege 1 secret Senhaestag
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 192.168.0.1
+interface vlan1 
+ip address 192.168.0.254 255.255.255.128
+do wr
+
+S4
+
+enable
+configure terminal
+hostname S4
+banner motd "SOMENTE PESSOAL AUTORIZADO"
+enable secret SenhadaEnable
+service password-encryption
+ip domain-name rede4.Local
+crypto key generate rsa general-key modulus 1024
+username administrador privilege 15 secret Senhaadmin
+username estagiario privilege 1 secret Senhaestag
+line console 0
+password SenhadaConsole
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+ip default-gateway 172.16.42.1
+interface vlan1 
+ip address 172.16.42.254 255.255.254.0
+do wr
